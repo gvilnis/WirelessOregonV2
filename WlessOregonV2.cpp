@@ -367,7 +367,7 @@ bool OregonDecoderV2::isSummOK(uint16_t sensorType) {
             s1 = (sum(6, data) + (data[6]&0xF) - 0xa) & 0xff;
             s2 = (s1 & 0xF0) >> 4;
             s1 = (s1 & 0x0F) << 4;
-            return ((s1 == data[6]) && (s2 == data[7]));
+            return ((s1 == (data[6]&0xF0)) && (s2 == (data[7])&0x0F));
         default:
             break;
     }
